@@ -1,0 +1,1053 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rakan Sukarela Muda</title>
+    <!-- FontAwesome & Font Google -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Caveat:wght@700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- TETAPAN UMUM & WARNA --- */
+        :root {
+            --primary-dark: #1b3c35;
+            --primary-green: #2a6f5e;
+            --accent-green: #88c1a2;
+            --bg-light: #e6ede9;
+            --bg-body: #f4f7f5;
+            --text-dark: #222222;
+            --white: #ffffff;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--text-dark);
+        }
+
+        /* --- HEADER & NAVIGASI --- */
+        header {
+            background: var(--white);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 5%;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo-img {
+            width: 50px;
+            height: 50px;
+            background: #1b3c35;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+        }
+
+        .logo-text {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #8c764e;
+            letter-spacing: 1px;
+            line-height: 1.1;
+        }
+
+        .logo-text span {
+            display: block;
+            color: #b59b60;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 10px;
+            align-items: center;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 600;
+            padding: 6px 16px;
+            border-radius: 20px;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        nav ul li a.active, nav ul li a:hover {
+            background-color: #333;
+            color: var(--white);
+        }
+
+        .search-box {
+            display: flex;
+            align-items: center;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            padding: 2px 5px;
+            background: #fff;
+        }
+
+        .search-box input {
+            border: none;
+            outline: none;
+            padding: 4px;
+            width: 120px;
+        }
+
+        .search-box i {
+            color: #0088cc;
+            font-size: 1.2rem;
+            margin-right: 5px;
+        }
+
+        /* --- PAGE CONTAINER --- */
+        .page-section {
+            display: none;
+            max-width: 1200px;
+            margin: 20px auto;
+            background: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+
+        .page-section.active {
+            display: block;
+        }
+
+        /* --- TOP CONTAINER --- */
+        .top-container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            min-height: 380px;
+        }
+
+        .left-banner {
+            background-color: var(--bg-light);
+            padding: 40px 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+
+        .left-banner h1 {
+            font-size: 2rem;
+            color: var(--primary-dark);
+            text-transform: uppercase;
+            border-bottom: 3px solid var(--primary-dark);
+            display: inline-block;
+            margin-bottom: 15px;
+            padding-bottom: 5px;
+        }
+
+        .left-banner p {
+            font-size: 0.9rem;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .banner-icon {
+            font-size: 3rem;
+            color: var(--primary-dark);
+            margin-top: 10px;
+        }
+
+        .banner-tag {
+            font-weight: bold;
+            color: var(--primary-dark);
+            margin-top: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .right-banner {
+            background-size: cover;
+            background-position: center;
+            position: relative;
+            min-height: 300px;
+        }
+
+        /* --- FOOTER BANNER --- */
+        .slogan-footer {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            text-align: center;
+            padding: 12px;
+            font-family: 'Caveat', cursive;
+            font-size: 1.8rem;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+        }
+
+        /* --- THREE COLUMNS GRID --- */
+        .three-columns {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
+            padding: 30px;
+            background-color: var(--bg-light);
+        }
+
+        .col-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .col-title i {
+            background: var(--primary-dark);
+            color: white;
+            padding: 6px;
+            border-radius: 50%;
+            font-size: 0.9rem;
+        }
+
+        /* --- HOME STYLES --- */
+        .hero-home {
+            background-image: url('tolong.png');
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero-overlay {
+    display: none;
+}
+
+        .hero-overlay h2 {
+            font-family: 'Caveat', cursive;
+            font-size: 2.5rem;
+            color: #222;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+
+        .btn {
+            padding: 8px 15px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-weight: bold;
+            color: white;
+            transition: 0.2s;
+        }
+
+        .btn:hover {
+            opacity: 0.9;
+        }
+
+        .btn-green { background-color: var(--accent-green); }
+        .btn-coral { background-color: #e06d53; }
+
+        .feature-box {
+            background: white;
+            padding: 15px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .feature-box i {
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        /* --- TENTANG KAMI STYLES --- */
+        .org-chart {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .chart-node {
+            background: var(--primary-dark);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-align: center;
+            width: 80%;
+        }
+
+        .chart-row {
+            display: flex;
+            gap: 10px;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .chart-node.light {
+            background: white;
+            color: black;
+            border: 1px solid #ccc;
+        }
+
+        .info-list {
+            list-style: none;
+        }
+
+        .info-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+            margin-bottom: 12px;
+            font-size: 0.85rem;
+        }
+
+        .info-list i {
+            background: var(--primary-dark);
+            color: white;
+            padding: 8px;
+            border-radius: 50%;
+            font-size: 0.8rem;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 5px;
+            text-align: center;
+            margin-top: 15px;
+        }
+
+        .value-item i {
+            background: #d0e0d8;
+            color: var(--primary-dark);
+            padding: 10px;
+            border-radius: 50%;
+            font-size: 1.2rem;
+            margin-bottom: 5px;
+        }
+
+        .value-item p {
+            font-size: 0.65rem;
+            font-weight: bold;
+        }
+
+        /* --- AKTIVITI STYLES --- */
+        .activities-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 15px;
+            padding: 20px 30px;
+        }
+
+        .act-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .act-card img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+        }
+
+        .act-card-body {
+            padding: 10px;
+        }
+
+        .act-card-title {
+            font-size: 0.85rem;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            margin-bottom: 5px;
+        }
+
+        .act-card-desc {
+            font-size: 0.75rem;
+            color: #555;
+            line-height: 1.3;
+        }
+
+        .upcoming-box {
+            background: white;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+            font-size: 0.75rem;
+        }
+
+        .upcoming-box i {
+            font-size: 1.5rem;
+            color: #e06d53;
+        }
+
+        /* --- SUKARELAWAN STYLES --- */
+        .program-tree {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .tree-root {
+            background: var(--primary-dark);
+            color: white;
+            padding: 6px 20px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+        }
+
+        .tree-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .tree-node {
+            border: 1px solid #999;
+            background: white;
+            padding: 8px;
+            border-radius: 4px;
+            font-size: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .benefit-list {
+            list-style: none;
+        }
+
+        .benefit-item {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+        .benefit-item i {
+            background: var(--primary-dark);
+            color: white;
+            padding: 8px;
+            border-radius: 50%;
+            height: max-content;
+        }
+
+        .benefit-text h4 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+        }
+
+        .benefit-text p {
+            font-size: 0.7rem;
+            color: #555;
+        }
+
+        /* CONTACT FOOTER BOX */
+        .contact-footer-box {
+            background: #d8e5df;
+            padding: 15px;
+            border-radius: 8px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            font-size: 0.85rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        /* --- REKABENTUK BORANG PENDAFTARAN --- */
+        .form-container {
+            padding: 30px;
+            background-color: var(--bg-light);
+        }
+
+        .form-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            max-width: 800px;
+            margin: 0 auto;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+            margin-bottom: 15px;
+        }
+
+        .form-group.full-width {
+            grid-column: span 2;
+        }
+
+        .form-group label {
+            font-size: 0.85rem;
+            font-weight: bold;
+            color: var(--primary-dark);
+        }
+
+        .form-group input, 
+        .form-group select, 
+        .form-group textarea {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 0.85rem;
+            outline: none;
+        }
+
+        .form-group input:focus, 
+        .form-group select:focus, 
+        .form-group textarea:focus {
+            border-color: var(--primary-green);
+        }
+
+        .checkbox-group {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-top: 5px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.8rem;
+        }
+
+        .btn-submit {
+            background-color: var(--primary-dark);
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 4px;
+            font-weight: bold;
+            cursor: pointer;
+            font-size: 0.9rem;
+            width: 100%;
+            transition: 0.3s;
+        }
+
+        .btn-submit:hover {
+            background-color: var(--primary-green);
+        }
+
+        /* RESPONSIF PADA SKRIN KECIL */
+        @media (max-width: 768px) {
+            header { flex-direction: column; gap: 10px; }
+            .top-container { grid-template-columns: 1fr; }
+            .three-columns { grid-template-columns: 1fr; }
+            .activities-grid { grid-template-columns: 1fr 1fr; }
+            .form-grid { grid-template-columns: 1fr; }
+            .form-group.full-width { grid-column: span 1; }
+            .checkbox-group { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HEADER & MENU NAVIGASI -->
+    <header>
+        <div class="logo-container">
+            <div class="logo-img"><i class="fa-solid fa-hands-holding-child"></i></div>
+            <div class="logo-text">RAKAN SUKARELA<span>MUDA</span></div>
+        </div>
+        <nav>
+            <ul>
+                <li><a class="nav-link active" onclick="showPage('home')">•Home</a></li>
+                <li><a class="nav-link" onclick="showPage('tentang')">•Tentang Kami</a></li>
+                <li><a class="nav-link" onclick="showPage('aktiviti')">•Aktiviti</a></li>
+                <li><a class="nav-link" onclick="showPage('sukarelawan')">•Sukarelawan</a></li>
+                <li><a class="nav-link" onclick="showPage('daftar')">•Daftar</a></li>
+            </ul>
+        </nav>
+        <div class="search-box">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" placeholder="Cari...">
+        </div>
+    </header>
+
+    <!-- ================= HALAMAN 1: HOME ================= -->
+    <section id="home" class="page-section active">
+        <div class="top-container">
+            <div class="left-banner" style="background-color: #d4e3dc;">
+                <h1 style="color: #c88a35; border-color: #c88a35;">GENERASI MUDA<br>AGEN PERUBAHAN</h1>
+                <p style="font-size: 0.8rem; font-weight: 600;">
+                    RAKAN SUKARELA MUDA MERUPAKAN PLATFORM UNTUK BELIA MENYUMBANG TENAGA IDEA DAN MASA DEMI MEMBANTU MASYARAKAT SERTA MEMBINA SEMANGAT KERJASAMA DAN KEPIMPINAN
+                </p>
+                <div class="btn-group">
+                    <button class="btn btn-green" onclick="showPage('aktiviti')">Lihat aktiviti</button>
+                    <button class="btn btn-coral" onclick="showPage('daftar')">Daftar Sekarang</button>
+                </div>
+            </div>
+            <div class="right-banner hero-home">
+            </div>
+        </div>
+
+        <div class="three-columns">
+            <div class="feature-box">
+                <i class="fa-solid fa-handshake" style="color: #222;"></i>
+                <h3>MEMBANTU MASYARAKAT</h3>
+                <p style="font-size: 0.75rem; color: #555; margin-top: 5px;">BERSAMA MENGUHULURKAN BANTUAN KEPADA MEREKA YANG MEMERLUKAN</p>
+            </div>
+            
+            <div style="display: flex; flex-direction: column; gap: 10px; justify-content: center;">
+                <div class="feature-box" style="display: flex; align-items: center; gap: 10px; text-align: left; padding: 10px;">
+                    <i class="fa-regular fa-clock" style="font-size: 1.5rem;"></i>
+                    <h4 style="font-size: 0.9rem;">•ISI MASA YANG BERFAEDAH</h4>
+                </div>
+                <div class="feature-box" style="display: flex; align-items: center; gap: 10px; text-align: left; padding: 10px;">
+                    <i class="fa-solid fa-briefcase" style="font-size: 1.5rem;"></i>
+                    <h4 style="font-size: 0.9rem;">•TAMBAH PENGALAMAN</h4>
+                </div>
+            </div>
+
+            <div class="feature-box">
+                <i class="fa-solid fa-graduation-cap" style="color: #222;"></i>
+                <h3>TINGKATKAN KEMAHIRAN</h3>
+                <p style="font-size: 0.75rem; color: #555; margin-top: 5px;">KEMBANGKAN KEMAHIRAN KOMUNIKASI</p>
+            </div>
+        </div>
+
+        <div class="slogan-footer" style="background: #222; font-family: sans-serif; font-size: 1rem; justify-content: space-around;">
+            <span>HUBUNGI KAMI:</span>
+            <span><i class="fa-brands fa-tiktok"></i> @Bratzz019</span>
+            <span><i class="fa-brands fa-instagram"></i> @Shrniqbal</span>
+            <span><i class="fa-brands fa-whatsapp"></i> +60 11 6913 5365</span>
+        </div>
+    </section>
+
+    <!-- ================= HALAMAN 2: TENTANG KAMI ================= -->
+    <section id="tentang" class="page-section">
+        <div class="top-container">
+            <div class="left-banner">
+                <h1>TENTANG KAMI</h1>
+                <p>Rakan Sukarela Muda ditubuhkan bagi menggalakkan penyertaan belia dalam aktiviti kemasyarakatan secara sukarela. Kami komited untuk membina komuniti yang prihatin, bersatu dan berdaya saing melalui pelbagai program yang memberi impak positif kepada masyarakat dan alam sekitar.</p>
+                <div class="banner-tag">
+                    <i class="fa-solid fa-handshake banner-icon"></i>
+                    <span>BERSAMA MEMBINA KOMUNITI PRIHATIN</span>
+                </div>
+            </div>
+            <div class="right-banner" style="background-image: url('ttgkami.png');"></div>
+        </div>
+
+        <div class="three-columns">
+            <div>
+                <div class="col-title"><i class="fa-solid fa-users"></i> CARTA ORGANISASI</div>
+                <div class="org-chart">
+                    <div class="chart-node">PENGERUSI</div>
+                    <div class="chart-row">
+                        <div class="chart-node light">NAIB PENGERUSI</div>
+                        <div class="chart-node light">SETIAUSAHA</div>
+                    </div>
+                    <div class="chart-row">
+                        <div class="chart-node light">BENDAHARI</div>
+                        <div class="chart-node light">AHLI JAWATANKUASA</div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="col-title"><i class="fa-solid fa-circle-info"></i> MAKLUMAT KAMI</div>
+                <ul class="info-list">
+                    <li><i class="fa-solid fa-location-dot"></i> <div><strong>Lokasi Ibu Pejabat</strong><br>Kg Skim Pamalan, Keningau, 89000, Sabah</div></li>
+                    <li><i class="fa-solid fa-phone"></i> <div><strong>Telefon</strong><br>+6011 6913 5365</div></li>
+                    <li><i class="fa-solid fa-envelope"></i> <div><strong>Emel</strong><br>sahrananiqbal120727@gmail.com</div></li>
+                    <li style="margin-top:10px;"><i class="fa-regular fa-clock"></i> <div><strong>Waktu Operasi</strong><br>6:00am-7:00pm</div></li>
+                </ul>
+            </div>
+
+            <div>
+                <div class="col-title"><i class="fa-solid fa-bullseye"></i> VISI</div>
+                <p style="font-size: 0.75rem; margin-bottom: 15px;">Menjadi organisasi sukarela belia terunggul yang membina komuniti prihatin dan sejahtera.</p>
+                
+                <div class="col-title"><i class="fa-solid fa-crosshairs"></i> MISI</div>
+                <ul style="font-size: 0.75rem; padding-left: 15px; margin-bottom: 15px;">
+                    <li>Menggalakkan penyertaan belia dalam aktiviti sukarela.</li>
+                    <li>Membangunkan potensi diri melalui khidmat masyarakat.</li>
+                    <li>Menjalin kerjasama strategik dengan komuniti dan rakan organisasi.</li>
+                </ul>
+
+                <div class="col-title" style="margin-bottom: 5px;">NILAI TERAS</div>
+                <div class="values-grid">
+                    <div class="value-item"><i class="fa-solid fa-people-holding"></i><p>KEBERSAMAAN</p></div>
+                    <div class="value-item"><i class="fa-solid fa-heart"></i><p>KEPRIHATINAN</p></div>
+                    <div class="value-item"><i class="fa-solid fa-shield-halved"></i><p>INTEGRITI</p></div>
+                    <div class="value-item"><i class="fa-solid fa-award"></i><p>KECEMERLANGAN</p></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="slogan-footer">
+            <i class="fa-solid fa-leaf"></i> Bersama Membina Komuniti Prihatin <i class="fa-solid fa-leaf"></i>
+        </div>
+    </section>
+
+    <!-- ================= HALAMAN 3: AKTIVITI ================= -->
+    <section id="aktiviti" class="page-section">
+        <div class="top-container">
+            <div class="left-banner">
+                <h1>AKTIVITI KELAB</h1>
+                <p>Kami menganjurkan pelbagai aktiviti sukarela yang memberi manfaat kepada masyarakat dan alam sekitar. Sertai kami untuk bersama-sama membawa perubahan positif!</p>
+            </div>
+            <div class="right-banner" style="background-image: url('aktiv.png');"></div>
+        </div>
+
+        <div class="activities-grid">
+            <div class="act-card">
+                <img src="https://images.unsplash.com/photo-1618477461853-cf6ed80faba5?auto=format&fit=crop&w=400&q=80" alt="Gotong-Royong">
+                <div class="act-card-body">
+                    <div class="act-card-title"><i class="fa-solid fa-hand-holding-water"></i> Gotong-Royong Sungai</div>
+                    <div class="act-card-desc">Membersihkan kawasan sungai dan sekitarnya.<br><em>Penyertaan lebih 50 sukarelawan.</em></div>
+                </div>
+            </div>
+            <div class="act-card">
+                <img src="banjir.png" alt="Bantuan Banjir">
+                <div class="act-card-body">
+                    <div class="act-card-title"><i class="fa-solid fa-box-open"></i> Bantuan Banjir</div>
+                    <div class="act-card-desc">Mengagihkan makanan, pakaian dan keperluan asas kepada mangsa banjir.</div>
+                </div>
+            </div>
+            <div class="act-card">
+                <img src="yatim.png" alt="Anak Yatim">
+                <div class="act-card-body">
+                    <div class="act-card-title"><i class="fa-solid fa-house-chimney-window"></i> Lawatan Rumah Anak Yatim</div>
+                    <div class="act-card-desc">Aktiviti interaksi dan sumbangan bagi memberi keceriaan kepada anak-anak yatim.</div>
+                </div>
+            </div>
+            <div class="act-card">
+                <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09?auto=format&fit=crop&w=400&q=80" alt="Penanaman Pokok">
+                <div class="act-card-body">
+                    <div class="act-card-title"><i class="fa-solid fa-tree"></i> Penanaman Pokok</div>
+                    <div class="act-card-desc">Kempen penghijauan untuk memelihara alam sekitar.<br><em>Penyertaan terbuka kepada semua.</em></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="three-columns" style="padding-top: 0;">
+            <div style="grid-column: span 2;">
+                <div class="col-title">AKTIVITI AKAN DATANG</div>
+                <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;">
+                    <div class="upcoming-box">
+                        <i class="fa-solid fa-droplet"></i>
+                        <div>
+                            <strong>Derma Darah Belia</strong><br>
+                            Tarikh: 10 Ogos 2025<br>
+                            Tempat: Pusat Darah Sandakan
+                        </div>
+                    </div>
+                    <div class="upcoming-box">
+                        <i class="fa-solid fa-basket-shopping" style="color:#d97706;"></i>
+                        <div>
+                            <strong>Program Food Bank</strong><br>
+                            Tarikh: 18 Ogos 2025<br>
+                            Tempat: Dewan Serbaguna
+                        </div>
+                    </div>
+                    <div class="upcoming-box">
+                        <i class="fa-solid fa-seedling" style="color:#16a34a;"></i>
+                        <div>
+                            <strong>Penanaman Pokok (Peringkat 2)</strong><br>
+                            Tarikh: 30 Ogos 2025<br>
+                            Tempat: Hutan Simpan Sandakan
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-green" style="margin-top: 15px; font-size: 0.8rem;">LIHAT SEMUA AKTIVITI <i class="fa-solid fa-circle-chevron-right"></i></button>
+            </div>
+
+            <div>
+                <div class="contact-footer-box">
+                    <div style="display: flex; align-items: center; gap: 10px;">
+                        <i class="fa-solid fa-handshake" style="font-size: 2rem;"></i>
+                        <strong>Bersama Membina Komuniti Prihatin</strong>
+                    </div>
+                    <hr>
+                    <div><strong>HUBUNGI KAMI:</strong></div>
+                    <a href="#" class="social-link"><i class="fa-brands fa-tiktok"></i> @Bratzz019</a>
+                    <a href="#" class="social-link"><i class="fa-brands fa-instagram"></i> @Shrniqbal</a>
+                    <a href="#" class="social-link"><i class="fa-brands fa-whatsapp"></i> +60 11 6913 5365</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ================= HALAMAN 4: SUKARELAWAN ================= -->
+    <section id="sukarelawan" class="page-section">
+        <div class="top-container">
+            <div class="left-banner">
+                <h1>SUKARELAWAN</h1>
+                <p>Sukarelawan merupakan tunjang kepada masyarakat yang prihatin dan sejahtera. Sertai kami dalam pelbagai program sukarela untuk memberi bantuan, membina kemahiran, menambah pengalaman dan membawa perubahan positif kepada komuniti dan negara.</p>
+                <div class="btn-group">
+                    <button class="btn btn-coral" onclick="showPage('daftar')">Daftar Sekarang</button>
+                </div>
+            </div>
+            <div class="right-banner" style="background-image: url('home.png');"></div>
+        </div>
+
+        <div class="three-columns">
+            <div>
+                <div class="col-title"><i class="fa-solid fa-users-gear"></i> PROGRAM SUKARELAWAN</div>
+                <div class="program-tree">
+                    <div class="tree-root">PROGRAM</div>
+                    <div class="tree-grid">
+                        <div class="tree-node">
+                            <i class="fa-solid fa-broom" style="color: green;"></i>
+                            <div><strong>GOTONG-ROYONG</strong><br><span style="font-size: 0.65rem;">Membersihkan kawasan awam.</span></div>
+                        </div>
+                        <div class="tree-node">
+                            <i class="fa-solid fa-hand-holding-medical" style="color: red;"></i>
+                            <div><strong>DERMA DARAH</strong><br><span style="font-size: 0.65rem;">Menyumbang darah, menyelamatkan nyawa.</span></div>
+                        </div>
+                        <div class="tree-node">
+                            <i class="fa-solid fa-house-chimney-crack" style="color: blue;"></i>
+                            <div><strong>BANTUAN BENCANA</strong><br><span style="font-size: 0.65rem;">Membantu mangsa bencana.</span></div>
+                        </div>
+                        <div class="tree-node">
+                            <i class="fa-solid fa-heart-pulse" style="color: purple;"></i>
+                            <div><strong>LAWATAN KEBAJIKAN</strong><br><span style="font-size: 0.65rem;">Menyantuni golongan memerlukan.</span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div>
+                <div class="col-title"><i class="fa-solid fa-circle-info"></i> MAKLUMAT SUKARELAWAN</div>
+                <ul class="info-list">
+                    <li>
+                        <i class="fa-solid fa-user-plus"></i>
+                        <div><strong>CARA MENYERTAI</strong><br>Daftar secara dalam talian melalui borang pendaftaran di laman web kami.</div>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-id-card"></i>
+                        <div><strong>SYARAT UMUR</strong><br>Terbuka kepada belia berumur 15 tahun ke atas.</div>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-envelope"></i>
+                        <div><strong>EMEL</strong><br>sahraniqbal120727@gmail.com</div>
+                    </li>
+                    <li>
+                        <i class="fa-solid fa-phone"></i>
+                        <div><strong>TELEFON</strong><br>+60 11 6913 5365</div>
+                    </li>
+                </ul>
+            </div>
+
+            <div>
+                <div class="col-title"><i class="fa-solid fa-star"></i> MANFAAT MENJADI SUKARELAWAN</div>
+                <ul class="benefit-list">
+                    <li class="benefit-item">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                        <div class="benefit-text">
+                            <h4>MEMBINA KEMAHIRAN</h4>
+                            <p>Mengembangkan kemahiran komunikasi, kerja berpasukan dan kepimpinan.</p>
+                        </div>
+                    </li>
+                    <li class="benefit-item">
+                        <i class="fa-solid fa-briefcase"></i>
+                        <div class="benefit-text">
+                            <h4>MENAMBAH PENGALAMAN</h4>
+                            <p>Memperoleh pengalaman berharga yang berguna untuk masa depan dan kerjaya.</p>
+                        </div>
+                    </li>
+                    <li class="benefit-item">
+                        <i class="fa-solid fa-people-roof"></i>
+                        <div class="benefit-text">
+                            <h4>MEMBANTU MASYARAKAT</h4>
+                            <p>Memberi impak positif kepada masyarakat dan alam sekitar.</p>
+                        </div>
+                    </li>
+                    <li class="benefit-item">
+                        <i class="fa-solid fa-certificate"></i>
+                        <div class="benefit-text">
+                            <h4>SIJIL PENYERTAAN</h4>
+                            <p>Sijil penyertaan disediakan sebagai pengiktirafan kepada semua sukarelawan aktif.</p>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="slogan-footer">
+            <i class="fa-solid fa-leaf"></i> Bersama Membina Komuniti Prihatin <i class="fa-solid fa-leaf"></i>
+        </div>
+    </section>
+
+    <!-- ================= HALAMAN 5: BORANG PENDAFTARAN (BARU) ================= -->
+    <section id="daftar" class="page-section">
+        <div class="top-container">
+            <div class="left-banner">
+                <h1>BORANG PENDAFTARAN</h1>
+                <p>Sertai Rakan Sukarela Muda sebagai sukarelawan rasmi. Isikan maklumat di bawah untuk mendaftar!</p>
+                <div class="banner-tag">
+                    <i class="fa-solid fa-user-pen banner-icon"></i>
+                    <span>JADI SEBAGIAN DARIPADA KAMI</span>
+                </div>
+            </div>
+            <div class="right-banner" style="background-image: url('daftar.png');"></div>
+        </div>
+
+        <div class="form-container">
+            <div class="form-card">
+                <form id="volunteerForm" onsubmit="handleFormSubmit(event)">
+                    <div class="form-grid">
+                        <div class="form-group full-width">
+                            <label for="nama"><i class="fa-solid fa-user"></i> Nama Penuh *</label>
+                            <input type="text" id="nama" placeholder="Masukkan nama penuh mengikut IC" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="ic"><i class="fa-solid fa-id-card"></i> Nombor Kad Pengenalan *</label>
+                            <input type="text" id="ic" placeholder="Cth: 020512125544" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="umur"><i class="fa-solid fa-calendar"></i> Umur *</label>
+                            <input type="number" id="umur" min="15" placeholder="Terbuka 15 tahun ke atas" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="telefon"><i class="fa-solid fa-phone"></i> Nombor Telefon / WhatsApp *</label>
+                            <input type="tel" id="telefon" placeholder="Cth: 01169135365" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="email"><i class="fa-solid fa-envelope"></i> Emel *</label>
+                            <input type="email" id="email" placeholder="Cth: nama@email.com" required>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label for="alamat"><i class="fa-solid fa-location-dot"></i> Alamat Kediaman *</label>
+                            <textarea id="alamat" rows="2" placeholder="Masukkan alamat lengkap anda" required></textarea>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <label><i class="fa-solid fa-hand-holding-heart"></i> Minat Program Sukarela (Boleh pilih lebih dari satu)</label>
+                            <div class="checkbox-group">
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="minat" value="Gotong-Royong"> Gotong-Royong & Kebersihan
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="minat" value="Bantuan Bencana"> Bantuan Bencana & Krisis
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="minat" value="Derma Darah"> Kempen Derma Darah
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="minat" value="Lawatan Kebajikan"> Lawatan Kebajikan / Anak Yatim
+                                </label>
+                                <label class="checkbox-item">
+                                    <input type="checkbox" name="minat" value="Penanaman Pokok"> Penanaman Pokok / Alam Sekitar
+                                </label>
+                            </div>
+                        </div>
+
+                        <div class="form-group full-width">
+                            <button type="submit" class="btn-submit">
+                                <i class="fa-solid fa-paper-plane"></i> HANTAR PENDAFTARAN
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="slogan-footer">
+            <i class="fa-solid fa-leaf"></i> Bersama Membina Komuniti Prihatin <i class="fa-solid fa-leaf"></i>
+        </div>
+    </section>
+
+    <!-- JAVASCRIPT UNTUK NAVIGATION & FORM -->
+    <script>
+        function showPage(pageId) {
+            // Sembunyikan semua seksyen
+            const sections = document.querySelectorAll('.page-section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+
+            // Buang status 'active' dari semua menu navigasi
+            const navLinks = document.querySelectorAll('.nav-link');
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+            });
+
+            // Tunjukkan seksyen yang dipilih
+            const targetSection = document.getElementById(pageId);
+            if(targetSection) {
+                targetSection.classList.add('active');
+            }
+
+            // Set navigasi aktif mengikut butang yang ditekan
+            const activeNav = Array.from(navLinks).find(link => link.getAttribute('onclick').includes(pageId));
+            if(activeNav) {
+                activeNav.classList.add('active');
+            }
+
+            // Scroll balik ke atas
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        function handleFormSubmit(event) {
+            event.preventDefault();
+            const nama = document.getElementById('nama').value;
+            alert(`Terima kasih, ${nama}! Pendaftaran anda telah berjaya dihantar. Pihak kami akan menghubungi anda melalui WhatsApp/Emel tidak lama lagi.`);
+            document.getElementById('volunteerForm').reset();
+            showPage('home');
+        }
+    </script>
+</body>
+</html>
